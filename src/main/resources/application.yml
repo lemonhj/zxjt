@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    database: oracle
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:oracle:thin:@172.86.210.253:1521:bigdatadb
+      username:
+      password:
+mybatis:
+  mapperLocations: classpath*:/mapper/*Mapper.xml
+
+
+logging:
+  pattern:
+    console: "%d -%5p - %t - %msg%n"
+  file: #/Users/maple/Desktop/scan/pdf/sell.log
+  level:
+    com.beigebigdata.pdf2htmlutil: info
