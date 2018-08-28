@@ -10,6 +10,9 @@ mybatis:
   mapperLocations: classpath*:/mapper/*Mapper.xml
 
 
+cronExpression: 0 0/50 * * * ?
+
+
 logging:
   pattern:
     console: "%d -%5p - %t - %msg%n"
