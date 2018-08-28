@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.CompanyCheckInfoMapper">
+
+	<resultMap id="CompanyCheckInfo" type="com.abcdpower.riskcontrol.zxjt.entity.CompanyCheckInfo">
+		<result property="id" column="ID"/>
+		<result property="companyId" column="COMPANY_ID"/>
+		<result property="checkOrg" column="CHECK_ORG"/>
+		<result property="checkType" column="CHECK_TYPE"/>
+		<result property="checkDate" column="CHECK_DATE"/>
+		<result property="checkResult" column="CHECK_RESULT"/>
+		<result property="remark" column="REMARK"/>
+		<result property="updatetime" column="UPDATETIME"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyCheckInfo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY_CHECK_INFO ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="companyId != null"> ,COMPANY_ID </if>	
+			<if test="checkOrg != null"> ,CHECK_ORG </if>	
+			<if test="checkType != null"> ,CHECK_TYPE </if>	
+			<if test="checkDate != null"> ,CHECK_DATE </if>	
+			<if test="checkResult != null"> ,CHECK_RESULT </if>	
+			<if test="remark != null"> ,REMARK </if>	
+			<if test="updatetime != null"> ,UPDATETIME </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="companyId != null"> ,#{companyId} </if>		       
+			<if test="checkOrg != null"> ,#{checkOrg} </if>		       
+			<if test="checkType != null"> ,#{checkType} </if>		       
+			<if test="checkDate != null"> ,#{checkDate} </if>		       
+			<if test="checkResult != null"> ,#{checkResult} </if>		       
+			<if test="remark != null"> ,#{remark} </if>		       
+			<if test="updatetime != null"> ,#{updatetime} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM COMPANY_CHECK_INFO
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyCheckInfo">  
+		UPDATE COMPANY_CHECK_INFO        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="companyId != null"> COMPANY_ID = #{companyId}, </if>
+			<if test="checkOrg != null"> CHECK_ORG = #{checkOrg}, </if>
+			<if test="checkType != null"> CHECK_TYPE = #{checkType}, </if>
+			<if test="checkDate != null"> CHECK_DATE = #{checkDate}, </if>
+			<if test="checkResult != null"> CHECK_RESULT = #{checkResult}, </if>
+			<if test="remark != null"> REMARK = #{remark}, </if>
+			<if test="updatetime != null"> UPDATETIME = #{updatetime}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="CompanyCheckInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			CHECK_ORG,
+			CHECK_TYPE,
+			CHECK_DATE,
+			CHECK_RESULT,
+			REMARK,
+			UPDATETIME
+		FROM COMPANY_CHECK_INFO
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="CompanyCheckInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			CHECK_ORG,
+			CHECK_TYPE,
+			CHECK_DATE,
+			CHECK_RESULT,
+			REMARK,
+			UPDATETIME
+		FROM COMPANY_CHECK_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="checkOrg != null"> AND CHECK_ORG = #{checkOrg} </if>
+			<if test="checkType != null"> AND CHECK_TYPE = #{checkType} </if>
+			<if test="checkDate != null"> AND CHECK_DATE = #{checkDate} </if>
+			<if test="checkResult != null"> AND CHECK_RESULT = #{checkResult} </if>
+			<if test="remark != null"> AND REMARK = #{remark} </if>
+			<if test="updatetime != null"> AND UPDATETIME = #{updatetime} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM COMPANY_CHECK_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="checkOrg != null"> AND CHECK_ORG = #{checkOrg} </if>
+			<if test="checkType != null"> AND CHECK_TYPE = #{checkType} </if>
+			<if test="checkDate != null"> AND CHECK_DATE = #{checkDate} </if>
+			<if test="checkResult != null"> AND CHECK_RESULT = #{checkResult} </if>
+			<if test="remark != null"> AND REMARK = #{remark} </if>
+			<if test="updatetime != null"> AND UPDATETIME = #{updatetime} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="CompanyCheckInfo" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			COMPANY_ID,
+			CHECK_ORG,
+			CHECK_TYPE,
+			CHECK_DATE,
+			CHECK_RESULT,
+			REMARK,
+			UPDATETIME
+		FROM COMPANY_CHECK_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="checkOrg != null"> AND CHECK_ORG = #{checkOrg} </if>
+			<if test="checkType != null"> AND CHECK_TYPE = #{checkType} </if>
+			<if test="checkDate != null"> AND CHECK_DATE = #{checkDate} </if>
+			<if test="checkResult != null"> AND CHECK_RESULT = #{checkResult} </if>
+			<if test="remark != null"> AND REMARK = #{remark} </if>
+			<if test="updatetime != null"> AND UPDATETIME = #{updatetime} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>

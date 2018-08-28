@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.CompanyIllegalInfoMapper">
+
+	<resultMap id="CompanyIllegalInfo" type="com.abcdpower.riskcontrol.zxjt.entity.CompanyIllegalInfo">
+		<result property="id" column="ID"/>
+		<result property="companyId" column="COMPANY_ID"/>
+		<result property="putReason" column="PUT_REASON"/>
+		<result property="putDate" column="PUT_DATE"/>
+		<result property="putDepartment" column="PUT_DEPARTMENT"/>
+		<result property="removeReason" column="REMOVE_REASON"/>
+		<result property="removeDate" column="REMOVE_DATE"/>
+		<result property="removeDepartment" column="REMOVE_DEPARTMENT"/>
+		<result property="type" column="TYPE"/>
+		<result property="fact" column="FACT"/>
+		<result property="deleted" column="DELETED"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyIllegalInfo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY_ILLEGAL_INFO ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="companyId != null"> ,COMPANY_ID </if>	
+			<if test="putReason != null"> ,PUT_REASON </if>	
+			<if test="putDate != null"> ,PUT_DATE </if>	
+			<if test="putDepartment != null"> ,PUT_DEPARTMENT </if>	
+			<if test="removeReason != null"> ,REMOVE_REASON </if>	
+			<if test="removeDate != null"> ,REMOVE_DATE </if>	
+			<if test="removeDepartment != null"> ,REMOVE_DEPARTMENT </if>	
+			<if test="type != null"> ,TYPE </if>	
+			<if test="fact != null"> ,FACT </if>	
+			<if test="deleted != null"> ,DELETED </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="companyId != null"> ,#{companyId} </if>		       
+			<if test="putReason != null"> ,#{putReason} </if>		       
+			<if test="putDate != null"> ,#{putDate} </if>		       
+			<if test="putDepartment != null"> ,#{putDepartment} </if>		       
+			<if test="removeReason != null"> ,#{removeReason} </if>		       
+			<if test="removeDate != null"> ,#{removeDate} </if>		       
+			<if test="removeDepartment != null"> ,#{removeDepartment} </if>		       
+			<if test="type != null"> ,#{type} </if>		       
+			<if test="fact != null"> ,#{fact} </if>		       
+			<if test="deleted != null"> ,#{deleted} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM COMPANY_ILLEGAL_INFO
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyIllegalInfo">  
+		UPDATE COMPANY_ILLEGAL_INFO        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="companyId != null"> COMPANY_ID = #{companyId}, </if>
+			<if test="putReason != null"> PUT_REASON = #{putReason}, </if>
+			<if test="putDate != null"> PUT_DATE = #{putDate}, </if>
+			<if test="putDepartment != null"> PUT_DEPARTMENT = #{putDepartment}, </if>
+			<if test="removeReason != null"> REMOVE_REASON = #{removeReason}, </if>
+			<if test="removeDate != null"> REMOVE_DATE = #{removeDate}, </if>
+			<if test="removeDepartment != null"> REMOVE_DEPARTMENT = #{removeDepartment}, </if>
+			<if test="type != null"> TYPE = #{type}, </if>
+			<if test="fact != null"> FACT = #{fact}, </if>
+			<if test="deleted != null"> DELETED = #{deleted}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="CompanyIllegalInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			PUT_REASON,
+			PUT_DATE,
+			PUT_DEPARTMENT,
+			REMOVE_REASON,
+			REMOVE_DATE,
+			REMOVE_DEPARTMENT,
+			TYPE,
+			FACT,
+			DELETED
+		FROM COMPANY_ILLEGAL_INFO
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="CompanyIllegalInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			PUT_REASON,
+			PUT_DATE,
+			PUT_DEPARTMENT,
+			REMOVE_REASON,
+			REMOVE_DATE,
+			REMOVE_DEPARTMENT,
+			TYPE,
+			FACT,
+			DELETED
+		FROM COMPANY_ILLEGAL_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="putReason != null"> AND PUT_REASON = #{putReason} </if>
+			<if test="putDate != null"> AND PUT_DATE = #{putDate} </if>
+			<if test="putDepartment != null"> AND PUT_DEPARTMENT = #{putDepartment} </if>
+			<if test="removeReason != null"> AND REMOVE_REASON = #{removeReason} </if>
+			<if test="removeDate != null"> AND REMOVE_DATE = #{removeDate} </if>
+			<if test="removeDepartment != null"> AND REMOVE_DEPARTMENT = #{removeDepartment} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="fact != null"> AND FACT = #{fact} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM COMPANY_ILLEGAL_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="putReason != null"> AND PUT_REASON = #{putReason} </if>
+			<if test="putDate != null"> AND PUT_DATE = #{putDate} </if>
+			<if test="putDepartment != null"> AND PUT_DEPARTMENT = #{putDepartment} </if>
+			<if test="removeReason != null"> AND REMOVE_REASON = #{removeReason} </if>
+			<if test="removeDate != null"> AND REMOVE_DATE = #{removeDate} </if>
+			<if test="removeDepartment != null"> AND REMOVE_DEPARTMENT = #{removeDepartment} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="fact != null"> AND FACT = #{fact} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="CompanyIllegalInfo" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			COMPANY_ID,
+			PUT_REASON,
+			PUT_DATE,
+			PUT_DEPARTMENT,
+			REMOVE_REASON,
+			REMOVE_DATE,
+			REMOVE_DEPARTMENT,
+			TYPE,
+			FACT,
+			DELETED
+		FROM COMPANY_ILLEGAL_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="putReason != null"> AND PUT_REASON = #{putReason} </if>
+			<if test="putDate != null"> AND PUT_DATE = #{putDate} </if>
+			<if test="putDepartment != null"> AND PUT_DEPARTMENT = #{putDepartment} </if>
+			<if test="removeReason != null"> AND REMOVE_REASON = #{removeReason} </if>
+			<if test="removeDate != null"> AND REMOVE_DATE = #{removeDate} </if>
+			<if test="removeDepartment != null"> AND REMOVE_DEPARTMENT = #{removeDepartment} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="fact != null"> AND FACT = #{fact} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>

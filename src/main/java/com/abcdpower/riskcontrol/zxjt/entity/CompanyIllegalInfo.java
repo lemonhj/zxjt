@@ -5,11 +5,11 @@ import java.util.Date;
 
 
 /**
- * 经营异常
+ * 严重违法
  * @version 1.0
  * @date Jun 18, 2007
  */
-public class CompanyAbnormalInfo {
+public class CompanyIllegalInfo {
 
 	private Long id;
 	
@@ -27,7 +27,9 @@ public class CompanyAbnormalInfo {
 	
 	private String removeDepartment;
 	
-	private Date createtime;
+	private String type;
+	
+	private String fact;
 	
 	private int deleted;
 	
@@ -95,12 +97,20 @@ public class CompanyAbnormalInfo {
 		this.removeDepartment = removeDepartment;
 	}
 	
-	public Date getCreatetime() {
-		return this.createtime;
+	public String getType() {
+		return this.type;
 	}
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getFact() {
+		return this.fact;
+	}
+
+	public void setFact(String fact) {
+		this.fact = fact;
 	}
 	
 	public int getDeleted() {

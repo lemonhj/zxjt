@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.CompanyMapper">
+
+	<resultMap id="Company" type="com.abcdpower.riskcontrol.zxjt.entity.Company">
+		<result property="id" column="ID"/>
+		<result property="base" column="BASE"/>
+		<result property="name" column="NAME"/>
+		<result property="legalPersonId" column="LEGAL_PERSON_ID"/>
+		<result property="legalPersonName" column="LEGAL_PERSON_NAME"/>
+		<result property="legalPersonType" column="LEGAL_PERSON_TYPE"/>
+		<result property="regNumber" column="REG_NUMBER"/>
+		<result property="companyType" column="COMPANY_TYPE"/>
+		<result property="companyOrgType" column="COMPANY_ORG_TYPE"/>
+		<result property="regLocation" column="REG_LOCATION"/>
+		<result property="estiblishTime" column="ESTIBLISH_TIME"/>
+		<result property="fromTime" column="FROM_TIME"/>
+		<result property="toTime" column="TO_TIME"/>
+		<result property="businessScope" column="BUSINESS_SCOPE"/>
+		<result property="regInstitute" column="REG_INSTITUTE"/>
+		<result property="approvedTime" column="APPROVED_TIME"/>
+		<result property="regStatus" column="REG_STATUS"/>
+		<result property="regCapital" column="REG_CAPITAL"/>
+		<result property="actualCapital" column="ACTUAL_CAPITAL"/>
+		<result property="orgNumber" column="ORG_NUMBER"/>
+		<result property="orgApprovedInstitute" column="ORG_APPROVED_INSTITUTE"/>
+		<result property="flag" column="FLAG"/>
+		<result property="parentId" column="PARENT_ID"/>
+		<result property="updatetime" column="UPDATETIME"/>
+		<result property="listCode" column="LIST_CODE"/>
+		<result property="ownershipStake" column="OWNERSHIP_STAKE"/>
+		<result property="sourceFlag" column="SOURCE_FLAG"/>
+		<result property="nameSuffix" column="NAME_SUFFIX"/>
+		<result property="property1" column="PROPERTY1"/>
+		<result property="property2" column="PROPERTY2"/>
+		<result property="property3" column="PROPERTY3"/>
+		<result property="property4" column="PROPERTY4"/>
+		<result property="property5" column="PROPERTY5"/>
+		<result property="crawledtime" column="CRAWLEDTIME"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.Company" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="base != null"> ,BASE </if>	
+			<if test="name != null"> ,NAME </if>	
+			<if test="legalPersonId != null"> ,LEGAL_PERSON_ID </if>	
+			<if test="legalPersonName != null"> ,LEGAL_PERSON_NAME </if>	
+			<if test="legalPersonType != null"> ,LEGAL_PERSON_TYPE </if>	
+			<if test="regNumber != null"> ,REG_NUMBER </if>	
+			<if test="companyType != null"> ,COMPANY_TYPE </if>	
+			<if test="companyOrgType != null"> ,COMPANY_ORG_TYPE </if>	
+			<if test="regLocation != null"> ,REG_LOCATION </if>	
+			<if test="estiblishTime != null"> ,ESTIBLISH_TIME </if>	
+			<if test="fromTime != null"> ,FROM_TIME </if>	
+			<if test="toTime != null"> ,TO_TIME </if>	
+			<if test="businessScope != null"> ,BUSINESS_SCOPE </if>	
+			<if test="regInstitute != null"> ,REG_INSTITUTE </if>	
+			<if test="approvedTime != null"> ,APPROVED_TIME </if>	
+			<if test="regStatus != null"> ,REG_STATUS </if>	
+			<if test="regCapital != null"> ,REG_CAPITAL </if>	
+			<if test="actualCapital != null"> ,ACTUAL_CAPITAL </if>	
+			<if test="orgNumber != null"> ,ORG_NUMBER </if>	
+			<if test="orgApprovedInstitute != null"> ,ORG_APPROVED_INSTITUTE </if>	
+			<if test="flag != null"> ,FLAG </if>	
+			<if test="parentId != null"> ,PARENT_ID </if>	
+			<if test="updatetime != null"> ,UPDATETIME </if>	
+			<if test="listCode != null"> ,LIST_CODE </if>	
+			<if test="ownershipStake != null"> ,OWNERSHIP_STAKE </if>	
+			<if test="sourceFlag != null"> ,SOURCE_FLAG </if>	
+			<if test="nameSuffix != null"> ,NAME_SUFFIX </if>	
+			<if test="property1 != null"> ,PROPERTY1 </if>	
+			<if test="property2 != null"> ,PROPERTY2 </if>	
+			<if test="property3 != null"> ,PROPERTY3 </if>	
+			<if test="property4 != null"> ,PROPERTY4 </if>	
+			<if test="property5 != null"> ,PROPERTY5 </if>	
+			<if test="crawledtime != null"> ,CRAWLEDTIME </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="base != null"> ,#{base} </if>		       
+			<if test="name != null"> ,#{name} </if>		       
+			<if test="legalPersonId != null"> ,#{legalPersonId} </if>		       
+			<if test="legalPersonName != null"> ,#{legalPersonName} </if>		       
+			<if test="legalPersonType != null"> ,#{legalPersonType} </if>		       
+			<if test="regNumber != null"> ,#{regNumber} </if>		       
+			<if test="companyType != null"> ,#{companyType} </if>		       
+			<if test="companyOrgType != null"> ,#{companyOrgType} </if>		       
+			<if test="regLocation != null"> ,#{regLocation} </if>		       
+			<if test="estiblishTime != null"> ,#{estiblishTime} </if>		       
+			<if test="fromTime != null"> ,#{fromTime} </if>		       
+			<if test="toTime != null"> ,#{toTime} </if>		       
+			<if test="businessScope != null"> ,#{businessScope} </if>		       
+			<if test="regInstitute != null"> ,#{regInstitute} </if>		       
+			<if test="approvedTime != null"> ,#{approvedTime} </if>		       
+			<if test="regStatus != null"> ,#{regStatus} </if>		       
+			<if test="regCapital != null"> ,#{regCapital} </if>		       
+			<if test="actualCapital != null"> ,#{actualCapital} </if>		       
+			<if test="orgNumber != null"> ,#{orgNumber} </if>		       
+			<if test="orgApprovedInstitute != null"> ,#{orgApprovedInstitute} </if>		       
+			<if test="flag != null"> ,#{flag} </if>		       
+			<if test="parentId != null"> ,#{parentId} </if>		       
+			<if test="updatetime != null"> ,#{updatetime} </if>		       
+			<if test="listCode != null"> ,#{listCode} </if>		       
+			<if test="ownershipStake != null"> ,#{ownershipStake} </if>		       
+			<if test="sourceFlag != null"> ,#{sourceFlag} </if>		       
+			<if test="nameSuffix != null"> ,#{nameSuffix} </if>		       
+			<if test="property1 != null"> ,#{property1} </if>		       
+			<if test="property2 != null"> ,#{property2} </if>		       
+			<if test="property3 != null"> ,#{property3} </if>		       
+			<if test="property4 != null"> ,#{property4} </if>		       
+			<if test="property5 != null"> ,#{property5} </if>		       
+			<if test="crawledtime != null"> ,#{crawledtime} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM COMPANY
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.Company">  
+		UPDATE COMPANY        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="base != null"> BASE = #{base}, </if>
+			<if test="name != null"> NAME = #{name}, </if>
+			<if test="legalPersonId != null"> LEGAL_PERSON_ID = #{legalPersonId}, </if>
+			<if test="legalPersonName != null"> LEGAL_PERSON_NAME = #{legalPersonName}, </if>
+			<if test="legalPersonType != null"> LEGAL_PERSON_TYPE = #{legalPersonType}, </if>
+			<if test="regNumber != null"> REG_NUMBER = #{regNumber}, </if>
+			<if test="companyType != null"> COMPANY_TYPE = #{companyType}, </if>
+			<if test="companyOrgType != null"> COMPANY_ORG_TYPE = #{companyOrgType}, </if>
+			<if test="regLocation != null"> REG_LOCATION = #{regLocation}, </if>
+			<if test="estiblishTime != null"> ESTIBLISH_TIME = #{estiblishTime}, </if>
+			<if test="fromTime != null"> FROM_TIME = #{fromTime}, </if>
+			<if test="toTime != null"> TO_TIME = #{toTime}, </if>
+			<if test="businessScope != null"> BUSINESS_SCOPE = #{businessScope}, </if>
+			<if test="regInstitute != null"> REG_INSTITUTE = #{regInstitute}, </if>
+			<if test="approvedTime != null"> APPROVED_TIME = #{approvedTime}, </if>
+			<if test="regStatus != null"> REG_STATUS = #{regStatus}, </if>
+			<if test="regCapital != null"> REG_CAPITAL = #{regCapital}, </if>
+			<if test="actualCapital != null"> ACTUAL_CAPITAL = #{actualCapital}, </if>
+			<if test="orgNumber != null"> ORG_NUMBER = #{orgNumber}, </if>
+			<if test="orgApprovedInstitute != null"> ORG_APPROVED_INSTITUTE = #{orgApprovedInstitute}, </if>
+			<if test="flag != null"> FLAG = #{flag}, </if>
+			<if test="parentId != null"> PARENT_ID = #{parentId}, </if>
+			<if test="updatetime != null"> UPDATETIME = #{updatetime}, </if>
+			<if test="listCode != null"> LIST_CODE = #{listCode}, </if>
+			<if test="ownershipStake != null"> OWNERSHIP_STAKE = #{ownershipStake}, </if>
+			<if test="sourceFlag != null"> SOURCE_FLAG = #{sourceFlag}, </if>
+			<if test="nameSuffix != null"> NAME_SUFFIX = #{nameSuffix}, </if>
+			<if test="property1 != null"> PROPERTY1 = #{property1}, </if>
+			<if test="property2 != null"> PROPERTY2 = #{property2}, </if>
+			<if test="property3 != null"> PROPERTY3 = #{property3}, </if>
+			<if test="property4 != null"> PROPERTY4 = #{property4}, </if>
+			<if test="property5 != null"> PROPERTY5 = #{property5}, </if>
+			<if test="crawledtime != null"> CRAWLEDTIME = #{crawledtime}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="Company">  
+		SELECT 
+			ID,
+			BASE,
+			NAME,
+			LEGAL_PERSON_ID,
+			LEGAL_PERSON_NAME,
+			LEGAL_PERSON_TYPE,
+			REG_NUMBER,
+			COMPANY_TYPE,
+			COMPANY_ORG_TYPE,
+			REG_LOCATION,
+			ESTIBLISH_TIME,
+			FROM_TIME,
+			TO_TIME,
+			BUSINESS_SCOPE,
+			REG_INSTITUTE,
+			APPROVED_TIME,
+			REG_STATUS,
+			REG_CAPITAL,
+			ACTUAL_CAPITAL,
+			ORG_NUMBER,
+			ORG_APPROVED_INSTITUTE,
+			FLAG,
+			PARENT_ID,
+			UPDATETIME,
+			LIST_CODE,
+			OWNERSHIP_STAKE,
+			SOURCE_FLAG,
+			NAME_SUFFIX,
+			PROPERTY1,
+			PROPERTY2,
+			PROPERTY3,
+			PROPERTY4,
+			PROPERTY5,
+			CRAWLEDTIME
+		FROM COMPANY
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="Company">  
+		SELECT 
+			ID,
+			BASE,
+			NAME,
+			LEGAL_PERSON_ID,
+			LEGAL_PERSON_NAME,
+			LEGAL_PERSON_TYPE,
+			REG_NUMBER,
+			COMPANY_TYPE,
+			COMPANY_ORG_TYPE,
+			REG_LOCATION,
+			ESTIBLISH_TIME,
+			FROM_TIME,
+			TO_TIME,
+			BUSINESS_SCOPE,
+			REG_INSTITUTE,
+			APPROVED_TIME,
+			REG_STATUS,
+			REG_CAPITAL,
+			ACTUAL_CAPITAL,
+			ORG_NUMBER,
+			ORG_APPROVED_INSTITUTE,
+			FLAG,
+			PARENT_ID,
+			UPDATETIME,
+			LIST_CODE,
+			OWNERSHIP_STAKE,
+			SOURCE_FLAG,
+			NAME_SUFFIX,
+			PROPERTY1,
+			PROPERTY2,
+			PROPERTY3,
+			PROPERTY4,
+			PROPERTY5,
+			CRAWLEDTIME
+		FROM COMPANY
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="name != null"> AND NAME = #{name} </if>
+			<if test="legalPersonId != null"> AND LEGAL_PERSON_ID = #{legalPersonId} </if>
+			<if test="legalPersonName != null"> AND LEGAL_PERSON_NAME = #{legalPersonName} </if>
+			<if test="legalPersonType != null"> AND LEGAL_PERSON_TYPE = #{legalPersonType} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="companyType != null"> AND COMPANY_TYPE = #{companyType} </if>
+			<if test="companyOrgType != null"> AND COMPANY_ORG_TYPE = #{companyOrgType} </if>
+			<if test="regLocation != null"> AND REG_LOCATION = #{regLocation} </if>
+			<if test="estiblishTime != null"> AND ESTIBLISH_TIME = #{estiblishTime} </if>
+			<if test="fromTime != null"> AND FROM_TIME = #{fromTime} </if>
+			<if test="toTime != null"> AND TO_TIME = #{toTime} </if>
+			<if test="businessScope != null"> AND BUSINESS_SCOPE = #{businessScope} </if>
+			<if test="regInstitute != null"> AND REG_INSTITUTE = #{regInstitute} </if>
+			<if test="approvedTime != null"> AND APPROVED_TIME = #{approvedTime} </if>
+			<if test="regStatus != null"> AND REG_STATUS = #{regStatus} </if>
+			<if test="regCapital != null"> AND REG_CAPITAL = #{regCapital} </if>
+			<if test="actualCapital != null"> AND ACTUAL_CAPITAL = #{actualCapital} </if>
+			<if test="orgNumber != null"> AND ORG_NUMBER = #{orgNumber} </if>
+			<if test="orgApprovedInstitute != null"> AND ORG_APPROVED_INSTITUTE = #{orgApprovedInstitute} </if>
+			<if test="flag != null"> AND FLAG = #{flag} </if>
+			<if test="parentId != null"> AND PARENT_ID = #{parentId} </if>
+			<if test="updatetime != null"> AND UPDATETIME = #{updatetime} </if>
+			<if test="listCode != null"> AND LIST_CODE = #{listCode} </if>
+			<if test="ownershipStake != null"> AND OWNERSHIP_STAKE = #{ownershipStake} </if>
+			<if test="sourceFlag != null"> AND SOURCE_FLAG = #{sourceFlag} </if>
+			<if test="nameSuffix != null"> AND NAME_SUFFIX = #{nameSuffix} </if>
+			<if test="property1 != null"> AND PROPERTY1 = #{property1} </if>
+			<if test="property2 != null"> AND PROPERTY2 = #{property2} </if>
+			<if test="property3 != null"> AND PROPERTY3 = #{property3} </if>
+			<if test="property4 != null"> AND PROPERTY4 = #{property4} </if>
+			<if test="property5 != null"> AND PROPERTY5 = #{property5} </if>
+			<if test="crawledtime != null"> AND CRAWLEDTIME = #{crawledtime} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM COMPANY
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="name != null"> AND NAME = #{name} </if>
+			<if test="legalPersonId != null"> AND LEGAL_PERSON_ID = #{legalPersonId} </if>
+			<if test="legalPersonName != null"> AND LEGAL_PERSON_NAME = #{legalPersonName} </if>
+			<if test="legalPersonType != null"> AND LEGAL_PERSON_TYPE = #{legalPersonType} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="companyType != null"> AND COMPANY_TYPE = #{companyType} </if>
+			<if test="companyOrgType != null"> AND COMPANY_ORG_TYPE = #{companyOrgType} </if>
+			<if test="regLocation != null"> AND REG_LOCATION = #{regLocation} </if>
+			<if test="estiblishTime != null"> AND ESTIBLISH_TIME = #{estiblishTime} </if>
+			<if test="fromTime != null"> AND FROM_TIME = #{fromTime} </if>
+			<if test="toTime != null"> AND TO_TIME = #{toTime} </if>
+			<if test="businessScope != null"> AND BUSINESS_SCOPE = #{businessScope} </if>
+			<if test="regInstitute != null"> AND REG_INSTITUTE = #{regInstitute} </if>
+			<if test="approvedTime != null"> AND APPROVED_TIME = #{approvedTime} </if>
+			<if test="regStatus != null"> AND REG_STATUS = #{regStatus} </if>
+			<if test="regCapital != null"> AND REG_CAPITAL = #{regCapital} </if>
+			<if test="actualCapital != null"> AND ACTUAL_CAPITAL = #{actualCapital} </if>
+			<if test="orgNumber != null"> AND ORG_NUMBER = #{orgNumber} </if>
+			<if test="orgApprovedInstitute != null"> AND ORG_APPROVED_INSTITUTE = #{orgApprovedInstitute} </if>
+			<if test="flag != null"> AND FLAG = #{flag} </if>
+			<if test="parentId != null"> AND PARENT_ID = #{parentId} </if>
+			<if test="updatetime != null"> AND UPDATETIME = #{updatetime} </if>
+			<if test="listCode != null"> AND LIST_CODE = #{listCode} </if>
+			<if test="ownershipStake != null"> AND OWNERSHIP_STAKE = #{ownershipStake} </if>
+			<if test="sourceFlag != null"> AND SOURCE_FLAG = #{sourceFlag} </if>
+			<if test="nameSuffix != null"> AND NAME_SUFFIX = #{nameSuffix} </if>
+			<if test="property1 != null"> AND PROPERTY1 = #{property1} </if>
+			<if test="property2 != null"> AND PROPERTY2 = #{property2} </if>
+			<if test="property3 != null"> AND PROPERTY3 = #{property3} </if>
+			<if test="property4 != null"> AND PROPERTY4 = #{property4} </if>
+			<if test="property5 != null"> AND PROPERTY5 = #{property5} </if>
+			<if test="crawledtime != null"> AND CRAWLEDTIME = #{crawledtime} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="Company" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			BASE,
+			NAME,
+			LEGAL_PERSON_ID,
+			LEGAL_PERSON_NAME,
+			LEGAL_PERSON_TYPE,
+			REG_NUMBER,
+			COMPANY_TYPE,
+			COMPANY_ORG_TYPE,
+			REG_LOCATION,
+			ESTIBLISH_TIME,
+			FROM_TIME,
+			TO_TIME,
+			BUSINESS_SCOPE,
+			REG_INSTITUTE,
+			APPROVED_TIME,
+			REG_STATUS,
+			REG_CAPITAL,
+			ACTUAL_CAPITAL,
+			ORG_NUMBER,
+			ORG_APPROVED_INSTITUTE,
+			FLAG,
+			PARENT_ID,
+			UPDATETIME,
+			LIST_CODE,
+			OWNERSHIP_STAKE,
+			SOURCE_FLAG,
+			NAME_SUFFIX,
+			PROPERTY1,
+			PROPERTY2,
+			PROPERTY3,
+			PROPERTY4,
+			PROPERTY5,
+			CRAWLEDTIME
+		FROM COMPANY
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="name != null"> AND NAME = #{name} </if>
+			<if test="legalPersonId != null"> AND LEGAL_PERSON_ID = #{legalPersonId} </if>
+			<if test="legalPersonName != null"> AND LEGAL_PERSON_NAME = #{legalPersonName} </if>
+			<if test="legalPersonType != null"> AND LEGAL_PERSON_TYPE = #{legalPersonType} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="companyType != null"> AND COMPANY_TYPE = #{companyType} </if>
+			<if test="companyOrgType != null"> AND COMPANY_ORG_TYPE = #{companyOrgType} </if>
+			<if test="regLocation != null"> AND REG_LOCATION = #{regLocation} </if>
+			<if test="estiblishTime != null"> AND ESTIBLISH_TIME = #{estiblishTime} </if>
+			<if test="fromTime != null"> AND FROM_TIME = #{fromTime} </if>
+			<if test="toTime != null"> AND TO_TIME = #{toTime} </if>
+			<if test="businessScope != null"> AND BUSINESS_SCOPE = #{businessScope} </if>
+			<if test="regInstitute != null"> AND REG_INSTITUTE = #{regInstitute} </if>
+			<if test="approvedTime != null"> AND APPROVED_TIME = #{approvedTime} </if>
+			<if test="regStatus != null"> AND REG_STATUS = #{regStatus} </if>
+			<if test="regCapital != null"> AND REG_CAPITAL = #{regCapital} </if>
+			<if test="actualCapital != null"> AND ACTUAL_CAPITAL = #{actualCapital} </if>
+			<if test="orgNumber != null"> AND ORG_NUMBER = #{orgNumber} </if>
+			<if test="orgApprovedInstitute != null"> AND ORG_APPROVED_INSTITUTE = #{orgApprovedInstitute} </if>
+			<if test="flag != null"> AND FLAG = #{flag} </if>
+			<if test="parentId != null"> AND PARENT_ID = #{parentId} </if>
+			<if test="updatetime != null"> AND UPDATETIME = #{updatetime} </if>
+			<if test="listCode != null"> AND LIST_CODE = #{listCode} </if>
+			<if test="ownershipStake != null"> AND OWNERSHIP_STAKE = #{ownershipStake} </if>
+			<if test="sourceFlag != null"> AND SOURCE_FLAG = #{sourceFlag} </if>
+			<if test="nameSuffix != null"> AND NAME_SUFFIX = #{nameSuffix} </if>
+			<if test="property1 != null"> AND PROPERTY1 = #{property1} </if>
+			<if test="property2 != null"> AND PROPERTY2 = #{property2} </if>
+			<if test="property3 != null"> AND PROPERTY3 = #{property3} </if>
+			<if test="property4 != null"> AND PROPERTY4 = #{property4} </if>
+			<if test="property5 != null"> AND PROPERTY5 = #{property5} </if>
+			<if test="crawledtime != null"> AND CRAWLEDTIME = #{crawledtime} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+</mapper>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.CompanyPunishmentInfoMapper">
+
+	<resultMap id="CompanyPunishmentInfo" type="com.abcdpower.riskcontrol.zxjt.entity.CompanyPunishmentInfo">
+		<result property="id" column="ID"/>
+		<result property="companyId" column="COMPANY_ID"/>
+		<result property="base" column="BASE"/>
+		<result property="punishNumber" column="PUNISH_NUMBER"/>
+		<result property="name" column="NAME"/>
+		<result property="regNumber" column="REG_NUMBER"/>
+		<result property="legalPersonName" column="LEGAL_PERSON_NAME"/>
+		<result property="type" column="TYPE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="departmentName" column="DEPARTMENT_NAME"/>
+		<result property="decisionDate" column="DECISION_DATE"/>
+		<result property="publishDate" column="PUBLISH_DATE"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="deleted" column="DELETED"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyPunishmentInfo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY_PUNISHMENT_INFO ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="companyId != null"> ,COMPANY_ID </if>	
+			<if test="base != null"> ,BASE </if>	
+			<if test="punishNumber != null"> ,PUNISH_NUMBER </if>	
+			<if test="name != null"> ,NAME </if>	
+			<if test="regNumber != null"> ,REG_NUMBER </if>	
+			<if test="legalPersonName != null"> ,LEGAL_PERSON_NAME </if>	
+			<if test="type != null"> ,TYPE </if>	
+			<if test="content != null"> ,CONTENT </if>	
+			<if test="departmentName != null"> ,DEPARTMENT_NAME </if>	
+			<if test="decisionDate != null"> ,DECISION_DATE </if>	
+			<if test="publishDate != null"> ,PUBLISH_DATE </if>	
+			<if test="description != null"> ,DESCRIPTION </if>	
+			<if test="createTime != null"> ,CREATE_TIME </if>	
+			<if test="deleted != null"> ,DELETED </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="companyId != null"> ,#{companyId} </if>		       
+			<if test="base != null"> ,#{base} </if>		       
+			<if test="punishNumber != null"> ,#{punishNumber} </if>		       
+			<if test="name != null"> ,#{name} </if>		       
+			<if test="regNumber != null"> ,#{regNumber} </if>		       
+			<if test="legalPersonName != null"> ,#{legalPersonName} </if>		       
+			<if test="type != null"> ,#{type} </if>		       
+			<if test="content != null"> ,#{content} </if>		       
+			<if test="departmentName != null"> ,#{departmentName} </if>		       
+			<if test="decisionDate != null"> ,#{decisionDate} </if>		       
+			<if test="publishDate != null"> ,#{publishDate} </if>		       
+			<if test="description != null"> ,#{description} </if>		       
+			<if test="createTime != null"> ,#{createTime} </if>		       
+			<if test="deleted != null"> ,#{deleted} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM COMPANY_PUNISHMENT_INFO
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyPunishmentInfo">  
+		UPDATE COMPANY_PUNISHMENT_INFO        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="companyId != null"> COMPANY_ID = #{companyId}, </if>
+			<if test="base != null"> BASE = #{base}, </if>
+			<if test="punishNumber != null"> PUNISH_NUMBER = #{punishNumber}, </if>
+			<if test="name != null"> NAME = #{name}, </if>
+			<if test="regNumber != null"> REG_NUMBER = #{regNumber}, </if>
+			<if test="legalPersonName != null"> LEGAL_PERSON_NAME = #{legalPersonName}, </if>
+			<if test="type != null"> TYPE = #{type}, </if>
+			<if test="content != null"> CONTENT = #{content}, </if>
+			<if test="departmentName != null"> DEPARTMENT_NAME = #{departmentName}, </if>
+			<if test="decisionDate != null"> DECISION_DATE = #{decisionDate}, </if>
+			<if test="publishDate != null"> PUBLISH_DATE = #{publishDate}, </if>
+			<if test="description != null"> DESCRIPTION = #{description}, </if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime}, </if>
+			<if test="deleted != null"> DELETED = #{deleted}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="CompanyPunishmentInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			PUNISH_NUMBER,
+			NAME,
+			REG_NUMBER,
+			LEGAL_PERSON_NAME,
+			TYPE,
+			CONTENT,
+			DEPARTMENT_NAME,
+			DECISION_DATE,
+			PUBLISH_DATE,
+			DESCRIPTION,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_PUNISHMENT_INFO
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="CompanyPunishmentInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			PUNISH_NUMBER,
+			NAME,
+			REG_NUMBER,
+			LEGAL_PERSON_NAME,
+			TYPE,
+			CONTENT,
+			DEPARTMENT_NAME,
+			DECISION_DATE,
+			PUBLISH_DATE,
+			DESCRIPTION,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_PUNISHMENT_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="punishNumber != null"> AND PUNISH_NUMBER = #{punishNumber} </if>
+			<if test="name != null"> AND NAME = #{name} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="legalPersonName != null"> AND LEGAL_PERSON_NAME = #{legalPersonName} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="content != null"> AND CONTENT = #{content} </if>
+			<if test="departmentName != null"> AND DEPARTMENT_NAME = #{departmentName} </if>
+			<if test="decisionDate != null"> AND DECISION_DATE = #{decisionDate} </if>
+			<if test="publishDate != null"> AND PUBLISH_DATE = #{publishDate} </if>
+			<if test="description != null"> AND DESCRIPTION = #{description} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM COMPANY_PUNISHMENT_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="punishNumber != null"> AND PUNISH_NUMBER = #{punishNumber} </if>
+			<if test="name != null"> AND NAME = #{name} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="legalPersonName != null"> AND LEGAL_PERSON_NAME = #{legalPersonName} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="content != null"> AND CONTENT = #{content} </if>
+			<if test="departmentName != null"> AND DEPARTMENT_NAME = #{departmentName} </if>
+			<if test="decisionDate != null"> AND DECISION_DATE = #{decisionDate} </if>
+			<if test="publishDate != null"> AND PUBLISH_DATE = #{publishDate} </if>
+			<if test="description != null"> AND DESCRIPTION = #{description} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="CompanyPunishmentInfo" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			PUNISH_NUMBER,
+			NAME,
+			REG_NUMBER,
+			LEGAL_PERSON_NAME,
+			TYPE,
+			CONTENT,
+			DEPARTMENT_NAME,
+			DECISION_DATE,
+			PUBLISH_DATE,
+			DESCRIPTION,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_PUNISHMENT_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="punishNumber != null"> AND PUNISH_NUMBER = #{punishNumber} </if>
+			<if test="name != null"> AND NAME = #{name} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="legalPersonName != null"> AND LEGAL_PERSON_NAME = #{legalPersonName} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="content != null"> AND CONTENT = #{content} </if>
+			<if test="departmentName != null"> AND DEPARTMENT_NAME = #{departmentName} </if>
+			<if test="decisionDate != null"> AND DECISION_DATE = #{decisionDate} </if>
+			<if test="publishDate != null"> AND PUBLISH_DATE = #{publishDate} </if>
+			<if test="description != null"> AND DESCRIPTION = #{description} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>

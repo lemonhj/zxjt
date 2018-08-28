@@ -1,13 +1,19 @@
 spring:
-  jpa:
-    database: oracle
-  datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:oracle:thin:@172.86.210.253:1521:bigdatadb
-      username:
-      password:
+  datasource:  #数据库 配置
+    url: jdbc:mysql://172.17.1.177:3308/prism1
+    username: root
+    password: nkYh.68?1e7c
+    driver-class-name: com.mysql.jdbc.Driver
+#spring:
+#  jpa:
+#    database: mysql
+#  datasource:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql:thin:@172.17.1.177:3308:prism1
+#      username: root
+#      password: nkYh.68?1e7c
 mybatis:
-  mapperLocations: classpath*:/mapper/*Mapper.xml
+  mapperLocations: classpath*:/mapper/*.xml
 
 
 cronExpression: 0 0/50 * * * ?

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.CompanyMortgageInfoMapper">
+
+	<resultMap id="CompanyMortgageInfo" type="com.abcdpower.riskcontrol.zxjt.entity.CompanyMortgageInfo">
+		<result property="id" column="ID"/>
+		<result property="companyId" column="COMPANY_ID"/>
+		<result property="base" column="BASE"/>
+		<result property="regNum" column="REG_NUM"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="publishDate" column="PUBLISH_DATE"/>
+		<result property="status" column="STATUS"/>
+		<result property="regDepartment" column="REG_DEPARTMENT"/>
+		<result property="type" column="TYPE"/>
+		<result property="amount" column="AMOUNT"/>
+		<result property="term" column="TERM"/>
+		<result property="scope" column="SCOPE"/>
+		<result property="remark" column="REMARK"/>
+		<result property="overviewType" column="OVERVIEW_TYPE"/>
+		<result property="overviewAmount" column="OVERVIEW_AMOUNT"/>
+		<result property="overviewScope" column="OVERVIEW_SCOPE"/>
+		<result property="overviewTerm" column="OVERVIEW_TERM"/>
+		<result property="overviewRemark" column="OVERVIEW_REMARK"/>
+		<result property="cancelDate" column="CANCEL_DATE"/>
+		<result property="cancelReason" column="CANCEL_REASON"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="deleted" column="DELETED"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyMortgageInfo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY_MORTGAGE_INFO ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="companyId != null"> ,COMPANY_ID </if>	
+			<if test="base != null"> ,BASE </if>	
+			<if test="regNum != null"> ,REG_NUM </if>	
+			<if test="regDate != null"> ,REG_DATE </if>	
+			<if test="publishDate != null"> ,PUBLISH_DATE </if>	
+			<if test="status != null"> ,STATUS </if>	
+			<if test="regDepartment != null"> ,REG_DEPARTMENT </if>	
+			<if test="type != null"> ,TYPE </if>	
+			<if test="amount != null"> ,AMOUNT </if>	
+			<if test="term != null"> ,TERM </if>	
+			<if test="scope != null"> ,SCOPE </if>	
+			<if test="remark != null"> ,REMARK </if>	
+			<if test="overviewType != null"> ,OVERVIEW_TYPE </if>	
+			<if test="overviewAmount != null"> ,OVERVIEW_AMOUNT </if>	
+			<if test="overviewScope != null"> ,OVERVIEW_SCOPE </if>	
+			<if test="overviewTerm != null"> ,OVERVIEW_TERM </if>	
+			<if test="overviewRemark != null"> ,OVERVIEW_REMARK </if>	
+			<if test="cancelDate != null"> ,CANCEL_DATE </if>	
+			<if test="cancelReason != null"> ,CANCEL_REASON </if>	
+			<if test="createTime != null"> ,CREATE_TIME </if>	
+			<if test="deleted != null"> ,DELETED </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="companyId != null"> ,#{companyId} </if>		       
+			<if test="base != null"> ,#{base} </if>		       
+			<if test="regNum != null"> ,#{regNum} </if>		       
+			<if test="regDate != null"> ,#{regDate} </if>		       
+			<if test="publishDate != null"> ,#{publishDate} </if>		       
+			<if test="status != null"> ,#{status} </if>		       
+			<if test="regDepartment != null"> ,#{regDepartment} </if>		       
+			<if test="type != null"> ,#{type} </if>		       
+			<if test="amount != null"> ,#{amount} </if>		       
+			<if test="term != null"> ,#{term} </if>		       
+			<if test="scope != null"> ,#{scope} </if>		       
+			<if test="remark != null"> ,#{remark} </if>		       
+			<if test="overviewType != null"> ,#{overviewType} </if>		       
+			<if test="overviewAmount != null"> ,#{overviewAmount} </if>		       
+			<if test="overviewScope != null"> ,#{overviewScope} </if>		       
+			<if test="overviewTerm != null"> ,#{overviewTerm} </if>		       
+			<if test="overviewRemark != null"> ,#{overviewRemark} </if>		       
+			<if test="cancelDate != null"> ,#{cancelDate} </if>		       
+			<if test="cancelReason != null"> ,#{cancelReason} </if>		       
+			<if test="createTime != null"> ,#{createTime} </if>		       
+			<if test="deleted != null"> ,#{deleted} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM COMPANY_MORTGAGE_INFO
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyMortgageInfo">  
+		UPDATE COMPANY_MORTGAGE_INFO        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="companyId != null"> COMPANY_ID = #{companyId}, </if>
+			<if test="base != null"> BASE = #{base}, </if>
+			<if test="regNum != null"> REG_NUM = #{regNum}, </if>
+			<if test="regDate != null"> REG_DATE = #{regDate}, </if>
+			<if test="publishDate != null"> PUBLISH_DATE = #{publishDate}, </if>
+			<if test="status != null"> STATUS = #{status}, </if>
+			<if test="regDepartment != null"> REG_DEPARTMENT = #{regDepartment}, </if>
+			<if test="type != null"> TYPE = #{type}, </if>
+			<if test="amount != null"> AMOUNT = #{amount}, </if>
+			<if test="term != null"> TERM = #{term}, </if>
+			<if test="scope != null"> SCOPE = #{scope}, </if>
+			<if test="remark != null"> REMARK = #{remark}, </if>
+			<if test="overviewType != null"> OVERVIEW_TYPE = #{overviewType}, </if>
+			<if test="overviewAmount != null"> OVERVIEW_AMOUNT = #{overviewAmount}, </if>
+			<if test="overviewScope != null"> OVERVIEW_SCOPE = #{overviewScope}, </if>
+			<if test="overviewTerm != null"> OVERVIEW_TERM = #{overviewTerm}, </if>
+			<if test="overviewRemark != null"> OVERVIEW_REMARK = #{overviewRemark}, </if>
+			<if test="cancelDate != null"> CANCEL_DATE = #{cancelDate}, </if>
+			<if test="cancelReason != null"> CANCEL_REASON = #{cancelReason}, </if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime}, </if>
+			<if test="deleted != null"> DELETED = #{deleted}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="CompanyMortgageInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			REG_NUM,
+			REG_DATE,
+			PUBLISH_DATE,
+			STATUS,
+			REG_DEPARTMENT,
+			TYPE,
+			AMOUNT,
+			TERM,
+			SCOPE,
+			REMARK,
+			OVERVIEW_TYPE,
+			OVERVIEW_AMOUNT,
+			OVERVIEW_SCOPE,
+			OVERVIEW_TERM,
+			OVERVIEW_REMARK,
+			CANCEL_DATE,
+			CANCEL_REASON,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_MORTGAGE_INFO
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="CompanyMortgageInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			REG_NUM,
+			REG_DATE,
+			PUBLISH_DATE,
+			STATUS,
+			REG_DEPARTMENT,
+			TYPE,
+			AMOUNT,
+			TERM,
+			SCOPE,
+			REMARK,
+			OVERVIEW_TYPE,
+			OVERVIEW_AMOUNT,
+			OVERVIEW_SCOPE,
+			OVERVIEW_TERM,
+			OVERVIEW_REMARK,
+			CANCEL_DATE,
+			CANCEL_REASON,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_MORTGAGE_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="regNum != null"> AND REG_NUM = #{regNum} </if>
+			<if test="regDate != null"> AND REG_DATE = #{regDate} </if>
+			<if test="publishDate != null"> AND PUBLISH_DATE = #{publishDate} </if>
+			<if test="status != null"> AND STATUS = #{status} </if>
+			<if test="regDepartment != null"> AND REG_DEPARTMENT = #{regDepartment} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="amount != null"> AND AMOUNT = #{amount} </if>
+			<if test="term != null"> AND TERM = #{term} </if>
+			<if test="scope != null"> AND SCOPE = #{scope} </if>
+			<if test="remark != null"> AND REMARK = #{remark} </if>
+			<if test="overviewType != null"> AND OVERVIEW_TYPE = #{overviewType} </if>
+			<if test="overviewAmount != null"> AND OVERVIEW_AMOUNT = #{overviewAmount} </if>
+			<if test="overviewScope != null"> AND OVERVIEW_SCOPE = #{overviewScope} </if>
+			<if test="overviewTerm != null"> AND OVERVIEW_TERM = #{overviewTerm} </if>
+			<if test="overviewRemark != null"> AND OVERVIEW_REMARK = #{overviewRemark} </if>
+			<if test="cancelDate != null"> AND CANCEL_DATE = #{cancelDate} </if>
+			<if test="cancelReason != null"> AND CANCEL_REASON = #{cancelReason} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM COMPANY_MORTGAGE_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="regNum != null"> AND REG_NUM = #{regNum} </if>
+			<if test="regDate != null"> AND REG_DATE = #{regDate} </if>
+			<if test="publishDate != null"> AND PUBLISH_DATE = #{publishDate} </if>
+			<if test="status != null"> AND STATUS = #{status} </if>
+			<if test="regDepartment != null"> AND REG_DEPARTMENT = #{regDepartment} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="amount != null"> AND AMOUNT = #{amount} </if>
+			<if test="term != null"> AND TERM = #{term} </if>
+			<if test="scope != null"> AND SCOPE = #{scope} </if>
+			<if test="remark != null"> AND REMARK = #{remark} </if>
+			<if test="overviewType != null"> AND OVERVIEW_TYPE = #{overviewType} </if>
+			<if test="overviewAmount != null"> AND OVERVIEW_AMOUNT = #{overviewAmount} </if>
+			<if test="overviewScope != null"> AND OVERVIEW_SCOPE = #{overviewScope} </if>
+			<if test="overviewTerm != null"> AND OVERVIEW_TERM = #{overviewTerm} </if>
+			<if test="overviewRemark != null"> AND OVERVIEW_REMARK = #{overviewRemark} </if>
+			<if test="cancelDate != null"> AND CANCEL_DATE = #{cancelDate} </if>
+			<if test="cancelReason != null"> AND CANCEL_REASON = #{cancelReason} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="CompanyMortgageInfo" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			REG_NUM,
+			REG_DATE,
+			PUBLISH_DATE,
+			STATUS,
+			REG_DEPARTMENT,
+			TYPE,
+			AMOUNT,
+			TERM,
+			SCOPE,
+			REMARK,
+			OVERVIEW_TYPE,
+			OVERVIEW_AMOUNT,
+			OVERVIEW_SCOPE,
+			OVERVIEW_TERM,
+			OVERVIEW_REMARK,
+			CANCEL_DATE,
+			CANCEL_REASON,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_MORTGAGE_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="regNum != null"> AND REG_NUM = #{regNum} </if>
+			<if test="regDate != null"> AND REG_DATE = #{regDate} </if>
+			<if test="publishDate != null"> AND PUBLISH_DATE = #{publishDate} </if>
+			<if test="status != null"> AND STATUS = #{status} </if>
+			<if test="regDepartment != null"> AND REG_DEPARTMENT = #{regDepartment} </if>
+			<if test="type != null"> AND TYPE = #{type} </if>
+			<if test="amount != null"> AND AMOUNT = #{amount} </if>
+			<if test="term != null"> AND TERM = #{term} </if>
+			<if test="scope != null"> AND SCOPE = #{scope} </if>
+			<if test="remark != null"> AND REMARK = #{remark} </if>
+			<if test="overviewType != null"> AND OVERVIEW_TYPE = #{overviewType} </if>
+			<if test="overviewAmount != null"> AND OVERVIEW_AMOUNT = #{overviewAmount} </if>
+			<if test="overviewScope != null"> AND OVERVIEW_SCOPE = #{overviewScope} </if>
+			<if test="overviewTerm != null"> AND OVERVIEW_TERM = #{overviewTerm} </if>
+			<if test="overviewRemark != null"> AND OVERVIEW_REMARK = #{overviewRemark} </if>
+			<if test="cancelDate != null"> AND CANCEL_DATE = #{cancelDate} </if>
+			<if test="cancelReason != null"> AND CANCEL_REASON = #{cancelReason} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>

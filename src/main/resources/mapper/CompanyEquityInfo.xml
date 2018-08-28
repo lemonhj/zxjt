@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.CompanyEquityInfoMapper">
+
+	<resultMap id="CompanyEquityInfo" type="com.abcdpower.riskcontrol.zxjt.entity.CompanyEquityInfo">
+		<result property="id" column="ID"/>
+		<result property="companyId" column="COMPANY_ID"/>
+		<result property="base" column="BASE"/>
+		<result property="regNumber" column="REG_NUMBER"/>
+		<result property="pledgor" column="PLEDGOR"/>
+		<result property="certifNumberL" column="CERTIF_NUMBER_L"/>
+		<result property="equityAmount" column="EQUITY_AMOUNT"/>
+		<result property="pledgee" column="PLEDGEE"/>
+		<result property="certifNumberR" column="CERTIF_NUMBER_R"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="state" column="STATE"/>
+		<result property="putDate" column="PUT_DATE"/>
+		<result property="changeSituation" column="CHANGE_SITUATION"/>
+		<result property="cancelDate" column="CANCEL_DATE"/>
+		<result property="cancelReason" column="CANCEL_REASON"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="deleted" column="DELETED"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyEquityInfo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMPANY_EQUITY_INFO ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="companyId != null"> ,COMPANY_ID </if>	
+			<if test="base != null"> ,BASE </if>	
+			<if test="regNumber != null"> ,REG_NUMBER </if>	
+			<if test="pledgor != null"> ,PLEDGOR </if>	
+			<if test="certifNumberL != null"> ,CERTIF_NUMBER_L </if>	
+			<if test="equityAmount != null"> ,EQUITY_AMOUNT </if>	
+			<if test="pledgee != null"> ,PLEDGEE </if>	
+			<if test="certifNumberR != null"> ,CERTIF_NUMBER_R </if>	
+			<if test="regDate != null"> ,REG_DATE </if>	
+			<if test="state != null"> ,STATE </if>	
+			<if test="putDate != null"> ,PUT_DATE </if>	
+			<if test="changeSituation != null"> ,CHANGE_SITUATION </if>	
+			<if test="cancelDate != null"> ,CANCEL_DATE </if>	
+			<if test="cancelReason != null"> ,CANCEL_REASON </if>	
+			<if test="createTime != null"> ,CREATE_TIME </if>	
+			<if test="deleted != null"> ,DELETED </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="companyId != null"> ,#{companyId} </if>		       
+			<if test="base != null"> ,#{base} </if>		       
+			<if test="regNumber != null"> ,#{regNumber} </if>		       
+			<if test="pledgor != null"> ,#{pledgor} </if>		       
+			<if test="certifNumberL != null"> ,#{certifNumberL} </if>		       
+			<if test="equityAmount != null"> ,#{equityAmount} </if>		       
+			<if test="pledgee != null"> ,#{pledgee} </if>		       
+			<if test="certifNumberR != null"> ,#{certifNumberR} </if>		       
+			<if test="regDate != null"> ,#{regDate} </if>		       
+			<if test="state != null"> ,#{state} </if>		       
+			<if test="putDate != null"> ,#{putDate} </if>		       
+			<if test="changeSituation != null"> ,#{changeSituation} </if>		       
+			<if test="cancelDate != null"> ,#{cancelDate} </if>		       
+			<if test="cancelReason != null"> ,#{cancelReason} </if>		       
+			<if test="createTime != null"> ,#{createTime} </if>		       
+			<if test="deleted != null"> ,#{deleted} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM COMPANY_EQUITY_INFO
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.CompanyEquityInfo">  
+		UPDATE COMPANY_EQUITY_INFO        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="companyId != null"> COMPANY_ID = #{companyId}, </if>
+			<if test="base != null"> BASE = #{base}, </if>
+			<if test="regNumber != null"> REG_NUMBER = #{regNumber}, </if>
+			<if test="pledgor != null"> PLEDGOR = #{pledgor}, </if>
+			<if test="certifNumberL != null"> CERTIF_NUMBER_L = #{certifNumberL}, </if>
+			<if test="equityAmount != null"> EQUITY_AMOUNT = #{equityAmount}, </if>
+			<if test="pledgee != null"> PLEDGEE = #{pledgee}, </if>
+			<if test="certifNumberR != null"> CERTIF_NUMBER_R = #{certifNumberR}, </if>
+			<if test="regDate != null"> REG_DATE = #{regDate}, </if>
+			<if test="state != null"> STATE = #{state}, </if>
+			<if test="putDate != null"> PUT_DATE = #{putDate}, </if>
+			<if test="changeSituation != null"> CHANGE_SITUATION = #{changeSituation}, </if>
+			<if test="cancelDate != null"> CANCEL_DATE = #{cancelDate}, </if>
+			<if test="cancelReason != null"> CANCEL_REASON = #{cancelReason}, </if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime}, </if>
+			<if test="deleted != null"> DELETED = #{deleted}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="CompanyEquityInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			REG_NUMBER,
+			PLEDGOR,
+			CERTIF_NUMBER_L,
+			EQUITY_AMOUNT,
+			PLEDGEE,
+			CERTIF_NUMBER_R,
+			REG_DATE,
+			STATE,
+			PUT_DATE,
+			CHANGE_SITUATION,
+			CANCEL_DATE,
+			CANCEL_REASON,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_EQUITY_INFO
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="CompanyEquityInfo">  
+		SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			REG_NUMBER,
+			PLEDGOR,
+			CERTIF_NUMBER_L,
+			EQUITY_AMOUNT,
+			PLEDGEE,
+			CERTIF_NUMBER_R,
+			REG_DATE,
+			STATE,
+			PUT_DATE,
+			CHANGE_SITUATION,
+			CANCEL_DATE,
+			CANCEL_REASON,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_EQUITY_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="pledgor != null"> AND PLEDGOR = #{pledgor} </if>
+			<if test="certifNumberL != null"> AND CERTIF_NUMBER_L = #{certifNumberL} </if>
+			<if test="equityAmount != null"> AND EQUITY_AMOUNT = #{equityAmount} </if>
+			<if test="pledgee != null"> AND PLEDGEE = #{pledgee} </if>
+			<if test="certifNumberR != null"> AND CERTIF_NUMBER_R = #{certifNumberR} </if>
+			<if test="regDate != null"> AND REG_DATE = #{regDate} </if>
+			<if test="state != null"> AND STATE = #{state} </if>
+			<if test="putDate != null"> AND PUT_DATE = #{putDate} </if>
+			<if test="changeSituation != null"> AND CHANGE_SITUATION = #{changeSituation} </if>
+			<if test="cancelDate != null"> AND CANCEL_DATE = #{cancelDate} </if>
+			<if test="cancelReason != null"> AND CANCEL_REASON = #{cancelReason} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM COMPANY_EQUITY_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="pledgor != null"> AND PLEDGOR = #{pledgor} </if>
+			<if test="certifNumberL != null"> AND CERTIF_NUMBER_L = #{certifNumberL} </if>
+			<if test="equityAmount != null"> AND EQUITY_AMOUNT = #{equityAmount} </if>
+			<if test="pledgee != null"> AND PLEDGEE = #{pledgee} </if>
+			<if test="certifNumberR != null"> AND CERTIF_NUMBER_R = #{certifNumberR} </if>
+			<if test="regDate != null"> AND REG_DATE = #{regDate} </if>
+			<if test="state != null"> AND STATE = #{state} </if>
+			<if test="putDate != null"> AND PUT_DATE = #{putDate} </if>
+			<if test="changeSituation != null"> AND CHANGE_SITUATION = #{changeSituation} </if>
+			<if test="cancelDate != null"> AND CANCEL_DATE = #{cancelDate} </if>
+			<if test="cancelReason != null"> AND CANCEL_REASON = #{cancelReason} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="CompanyEquityInfo" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			COMPANY_ID,
+			BASE,
+			REG_NUMBER,
+			PLEDGOR,
+			CERTIF_NUMBER_L,
+			EQUITY_AMOUNT,
+			PLEDGEE,
+			CERTIF_NUMBER_R,
+			REG_DATE,
+			STATE,
+			PUT_DATE,
+			CHANGE_SITUATION,
+			CANCEL_DATE,
+			CANCEL_REASON,
+			CREATE_TIME,
+			DELETED
+		FROM COMPANY_EQUITY_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="companyId != null"> AND COMPANY_ID = #{companyId} </if>
+			<if test="base != null"> AND BASE = #{base} </if>
+			<if test="regNumber != null"> AND REG_NUMBER = #{regNumber} </if>
+			<if test="pledgor != null"> AND PLEDGOR = #{pledgor} </if>
+			<if test="certifNumberL != null"> AND CERTIF_NUMBER_L = #{certifNumberL} </if>
+			<if test="equityAmount != null"> AND EQUITY_AMOUNT = #{equityAmount} </if>
+			<if test="pledgee != null"> AND PLEDGEE = #{pledgee} </if>
+			<if test="certifNumberR != null"> AND CERTIF_NUMBER_R = #{certifNumberR} </if>
+			<if test="regDate != null"> AND REG_DATE = #{regDate} </if>
+			<if test="state != null"> AND STATE = #{state} </if>
+			<if test="putDate != null"> AND PUT_DATE = #{putDate} </if>
+			<if test="changeSituation != null"> AND CHANGE_SITUATION = #{changeSituation} </if>
+			<if test="cancelDate != null"> AND CANCEL_DATE = #{cancelDate} </if>
+			<if test="cancelReason != null"> AND CANCEL_REASON = #{cancelReason} </if>
+			<if test="createTime != null"> AND CREATE_TIME = #{createTime} </if>
+			<if test="deleted != null"> AND DELETED = #{deleted} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>

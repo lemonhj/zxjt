@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.ReportChangeRecordMapper">
+
+	<resultMap id="ReportChangeRecord" type="com.abcdpower.riskcontrol.zxjt.entity.ReportChangeRecord">
+		<result property="id" column="ID"/>
+		<result property="annualreportId" column="ANNUALREPORT_ID"/>
+		<result property="changeItem" column="CHANGE_ITEM"/>
+		<result property="contentBefore" column="CONTENT_BEFORE"/>
+		<result property="contentAfter" column="CONTENT_AFTER"/>
+		<result property="changeTime" column="CHANGE_TIME"/>
+		<result property="createtime" column="CREATETIME"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.ReportChangeRecord" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REPORT_CHANGE_RECORD ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="annualreportId != null"> ,ANNUALREPORT_ID </if>	
+			<if test="changeItem != null"> ,CHANGE_ITEM </if>	
+			<if test="contentBefore != null"> ,CONTENT_BEFORE </if>	
+			<if test="contentAfter != null"> ,CONTENT_AFTER </if>	
+			<if test="changeTime != null"> ,CHANGE_TIME </if>	
+			<if test="createtime != null"> ,CREATETIME </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="annualreportId != null"> ,#{annualreportId} </if>		       
+			<if test="changeItem != null"> ,#{changeItem} </if>		       
+			<if test="contentBefore != null"> ,#{contentBefore} </if>		       
+			<if test="contentAfter != null"> ,#{contentAfter} </if>		       
+			<if test="changeTime != null"> ,#{changeTime} </if>		       
+			<if test="createtime != null"> ,#{createtime} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM REPORT_CHANGE_RECORD
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.ReportChangeRecord">  
+		UPDATE REPORT_CHANGE_RECORD        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="annualreportId != null"> ANNUALREPORT_ID = #{annualreportId}, </if>
+			<if test="changeItem != null"> CHANGE_ITEM = #{changeItem}, </if>
+			<if test="contentBefore != null"> CONTENT_BEFORE = #{contentBefore}, </if>
+			<if test="contentAfter != null"> CONTENT_AFTER = #{contentAfter}, </if>
+			<if test="changeTime != null"> CHANGE_TIME = #{changeTime}, </if>
+			<if test="createtime != null"> CREATETIME = #{createtime}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="ReportChangeRecord">  
+		SELECT 
+			ID,
+			ANNUALREPORT_ID,
+			CHANGE_ITEM,
+			CONTENT_BEFORE,
+			CONTENT_AFTER,
+			CHANGE_TIME,
+			CREATETIME
+		FROM REPORT_CHANGE_RECORD
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="ReportChangeRecord">  
+		SELECT 
+			ID,
+			ANNUALREPORT_ID,
+			CHANGE_ITEM,
+			CONTENT_BEFORE,
+			CONTENT_AFTER,
+			CHANGE_TIME,
+			CREATETIME
+		FROM REPORT_CHANGE_RECORD
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="annualreportId != null"> AND ANNUALREPORT_ID = #{annualreportId} </if>
+			<if test="changeItem != null"> AND CHANGE_ITEM = #{changeItem} </if>
+			<if test="contentBefore != null"> AND CONTENT_BEFORE = #{contentBefore} </if>
+			<if test="contentAfter != null"> AND CONTENT_AFTER = #{contentAfter} </if>
+			<if test="changeTime != null"> AND CHANGE_TIME = #{changeTime} </if>
+			<if test="createtime != null"> AND CREATETIME = #{createtime} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM REPORT_CHANGE_RECORD
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="annualreportId != null"> AND ANNUALREPORT_ID = #{annualreportId} </if>
+			<if test="changeItem != null"> AND CHANGE_ITEM = #{changeItem} </if>
+			<if test="contentBefore != null"> AND CONTENT_BEFORE = #{contentBefore} </if>
+			<if test="contentAfter != null"> AND CONTENT_AFTER = #{contentAfter} </if>
+			<if test="changeTime != null"> AND CHANGE_TIME = #{changeTime} </if>
+			<if test="createtime != null"> AND CREATETIME = #{createtime} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="ReportChangeRecord" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			ANNUALREPORT_ID,
+			CHANGE_ITEM,
+			CONTENT_BEFORE,
+			CONTENT_AFTER,
+			CHANGE_TIME,
+			CREATETIME
+		FROM REPORT_CHANGE_RECORD
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="annualreportId != null"> AND ANNUALREPORT_ID = #{annualreportId} </if>
+			<if test="changeItem != null"> AND CHANGE_ITEM = #{changeItem} </if>
+			<if test="contentBefore != null"> AND CONTENT_BEFORE = #{contentBefore} </if>
+			<if test="contentAfter != null"> AND CONTENT_AFTER = #{contentAfter} </if>
+			<if test="changeTime != null"> AND CHANGE_TIME = #{changeTime} </if>
+			<if test="createtime != null"> AND CREATETIME = #{createtime} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>

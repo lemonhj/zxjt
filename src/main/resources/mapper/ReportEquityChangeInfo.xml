@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abcdpower.riskcontrol.zxjt.dao.ReportEquityChangeInfoMapper">
+
+	<resultMap id="ReportEquityChangeInfo" type="com.abcdpower.riskcontrol.zxjt.entity.ReportEquityChangeInfo">
+		<result property="id" column="ID"/>
+		<result property="annualreportId" column="ANNUALREPORT_ID"/>
+		<result property="investorName" column="INVESTOR_NAME"/>
+		<result property="ratioBefore" column="RATIO_BEFORE"/>
+		<result property="ratioAfter" column="RATIO_AFTER"/>
+		<result property="changeTime" column="CHANGE_TIME"/>
+		<result property="createtime" column="CREATETIME"/>
+	</resultMap>
+	
+	
+
+	<insert id="insert" parameterType="com.abcdpower.riskcontrol.zxjt.entity.ReportEquityChangeInfo" >
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT SEQ_DC_ID.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REPORT_EQUITY_CHANGE_INFO ( 
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,ID </if>	
+			<if test="annualreportId != null"> ,ANNUALREPORT_ID </if>	
+			<if test="investorName != null"> ,INVESTOR_NAME </if>	
+			<if test="ratioBefore != null"> ,RATIO_BEFORE </if>	
+			<if test="ratioAfter != null"> ,RATIO_AFTER </if>	
+			<if test="changeTime != null"> ,CHANGE_TIME </if>	
+			<if test="createtime != null"> ,CREATETIME </if>	
+			</trim>
+		) VALUES (
+			<trim prefixOverrides=",">
+			<if test="id != null"> ,#{id} </if>		       
+			<if test="annualreportId != null"> ,#{annualreportId} </if>		       
+			<if test="investorName != null"> ,#{investorName} </if>		       
+			<if test="ratioBefore != null"> ,#{ratioBefore} </if>		       
+			<if test="ratioAfter != null"> ,#{ratioAfter} </if>		       
+			<if test="changeTime != null"> ,#{changeTime} </if>		       
+			<if test="createtime != null"> ,#{createtime} </if>		       
+			</trim>
+		)
+	</insert>
+
+	
+	<delete id="delete">  
+		DELETE FROM REPORT_EQUITY_CHANGE_INFO
+		WHERE ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="com.abcdpower.riskcontrol.zxjt.entity.ReportEquityChangeInfo">  
+		UPDATE REPORT_EQUITY_CHANGE_INFO        
+		<set>
+			<if test="id != null"> ID = #{id}, </if>
+			<if test="annualreportId != null"> ANNUALREPORT_ID = #{annualreportId}, </if>
+			<if test="investorName != null"> INVESTOR_NAME = #{investorName}, </if>
+			<if test="ratioBefore != null"> RATIO_BEFORE = #{ratioBefore}, </if>
+			<if test="ratioAfter != null"> RATIO_AFTER = #{ratioAfter}, </if>
+			<if test="changeTime != null"> CHANGE_TIME = #{changeTime}, </if>
+			<if test="createtime != null"> CREATETIME = #{createtime}, </if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="get" parameterType="java.util.Map" resultMap="ReportEquityChangeInfo">  
+		SELECT 
+			ID,
+			ANNUALREPORT_ID,
+			INVESTOR_NAME,
+			RATIO_BEFORE,
+			RATIO_AFTER,
+			CHANGE_TIME,
+			CREATETIME
+		FROM REPORT_EQUITY_CHANGE_INFO
+		<where>
+			<if test="id != null"> ID = #{id} </if>
+		</where>
+	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultMap="ReportEquityChangeInfo">  
+		SELECT 
+			ID,
+			ANNUALREPORT_ID,
+			INVESTOR_NAME,
+			RATIO_BEFORE,
+			RATIO_AFTER,
+			CHANGE_TIME,
+			CREATETIME
+		FROM REPORT_EQUITY_CHANGE_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="annualreportId != null"> AND ANNUALREPORT_ID = #{annualreportId} </if>
+			<if test="investorName != null"> AND INVESTOR_NAME = #{investorName} </if>
+			<if test="ratioBefore != null"> AND RATIO_BEFORE = #{ratioBefore} </if>
+			<if test="ratioAfter != null"> AND RATIO_AFTER = #{ratioAfter} </if>
+			<if test="changeTime != null"> AND CHANGE_TIME = #{changeTime} </if>
+			<if test="createtime != null"> AND CREATETIME = #{createtime} </if>
+		</where>
+	</select>
+	
+	<select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">  
+		SELECT COUNT(*) FROM REPORT_EQUITY_CHANGE_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="annualreportId != null"> AND ANNUALREPORT_ID = #{annualreportId} </if>
+			<if test="investorName != null"> AND INVESTOR_NAME = #{investorName} </if>
+			<if test="ratioBefore != null"> AND RATIO_BEFORE = #{ratioBefore} </if>
+			<if test="ratioAfter != null"> AND RATIO_AFTER = #{ratioAfter} </if>
+			<if test="changeTime != null"> AND CHANGE_TIME = #{changeTime} </if>
+			<if test="createtime != null"> AND CREATETIME = #{createtime} </if>
+		</where>
+	</select>
+
+	<select id="getSplitList" parameterType="java.util.Map" resultMap="ReportEquityChangeInfo" >  
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+			ID,
+			ANNUALREPORT_ID,
+			INVESTOR_NAME,
+			RATIO_BEFORE,
+			RATIO_AFTER,
+			CHANGE_TIME,
+			CREATETIME
+		FROM REPORT_EQUITY_CHANGE_INFO
+		<where>
+			<if test="id != null"> AND ID = #{id} </if>
+			<if test="annualreportId != null"> AND ANNUALREPORT_ID = #{annualreportId} </if>
+			<if test="investorName != null"> AND INVESTOR_NAME = #{investorName} </if>
+			<if test="ratioBefore != null"> AND RATIO_BEFORE = #{ratioBefore} </if>
+			<if test="ratioAfter != null"> AND RATIO_AFTER = #{ratioAfter} </if>
+			<if test="changeTime != null"> AND CHANGE_TIME = #{changeTime} </if>
+			<if test="createtime != null"> AND CREATETIME = #{createtime} </if>
+		</where>
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #{endrow} ) B
+		WHERE R > #{startrow}   
+		]]> 
+	</select>
+
+
+
+</mapper>
